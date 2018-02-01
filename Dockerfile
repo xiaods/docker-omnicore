@@ -19,8 +19,7 @@ WORKDIR $APP_DIR
 
 ENV DEP curl
 RUN apk add --update $DEP \
-    && curl -sSL wget "https://bintray.com/artifact/download/omni/OmniBinaries/$omnicore_version-x86_64-linux-gnu.tar.gz" \
-    && tar -xvzf "$omnicore_version-x86_64-linux-gnu.tar.gz" \
+    && curl -sSL "https://bintray.com/artifact/download/omni/OmniBinaries/$omnicore_version-x86_64-linux-gnu.tar.gz" | tar xz \
     && mv "$omnicore_version" omnicore
 
 EXPOSE 8332
