@@ -24,7 +24,7 @@ ENV APP_GROUP            omnicore
 WORKDIR $APP_DIR
 
 ENV DEP curl gosu
-RUN && groupadd -r ${APP_GROUP} && useradd -r -m -g ${APP_GROUP} ${APP_USER} \
+RUN && addgroup omnicore && adduser -D -G ${APP_GROUP} ${APP_USER} \
     apk add --update $DEP \
     && curl -sSL "https://bintray.com/artifact/download/omni/OmniBinaries/$omnicore_version-x86_64-linux-gnu.tar.gz" | tar xz \
     && mv "$omnicore_version" ${APP_NAME} \
