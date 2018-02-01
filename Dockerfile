@@ -24,7 +24,7 @@ WORKDIR $APP_DIR
 
 ENV DEP curl gosu
 RUN && addgroup omnicore && adduser -D -G ${APP_GROUP} ${APP_USER} \
-    apk add --update $DEP \
+    && apk add --update $DEP \
     && curl -sSL "https://github.com/OmniLayer/omnicore/releases/download/v${OMNICORE_VER}/omnicore-${OMNICORE_VER}-${OMNICORE_ARCH}-linux-gnu.tar.gz" | tar xz \
     && mv omnicore-${OMNICORE_VER} ${APP_NAME} \
     && chown -R ${APP_USER}:${APP_GROUP} ${APP_NAME} \
