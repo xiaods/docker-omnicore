@@ -49,4 +49,5 @@ VOLUME /data
 EXPOSE 8332
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh", "omnicored"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["omnicored"]
