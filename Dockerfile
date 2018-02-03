@@ -44,7 +44,7 @@ RUN set -ex \
     && ln -sfn ${APP_NAME} /home/${APP_USER}/.bitcoin \
     && chown -R ${APP_USER}:${APP_GROUP} /home/${APP_USER}/.bitcoin
 
-VOLUME $DATA_DIR
+VOLUME /data
 
 EXPOSE 8332
 
