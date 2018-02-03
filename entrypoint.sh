@@ -11,8 +11,8 @@ printtoconsole=1
 omnilogfile=${LOG_OUTPUT}
 logtimestamps=1
 rpcallowip=${RPC_ALLOWIP}
-rpcuser=${BITCOIN_RPC_USER}
-rpcpassword=${BITCOIN_RPC_PASSWORD}
+rpcuser=${RPC_USER}
+rpcpassword=${RPC_PASSWORD}
 EOF
         chown "${APP_USER}:${APP_GROUP}" "${DATA_DIR}/bitcoin.conf"
     fi
