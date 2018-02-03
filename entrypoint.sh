@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+mkdir -p ${DATA_DIR}
+
 if [[ "$1" == "bitcoin-tx" || "$1" == "omnicore-cli" || "$1" == "omnicore-qt" || "$1" == "omnicored" ]]; then
 
     if [[ ! -s "${DATA_DIR}/bitcoin.conf" ]]; then
@@ -20,7 +22,7 @@ EOF
     # ensure correct ownership and linking of data directory
     # we do not update group ownership here, in case users want to mount
     # a host directory and still retain access to it
-    chown -R "${APP_USER}" "${DATA_DIR}"
+    chown -R "${APP_USER}:${APP_GROUP}" "${DATA_DIR}"
     ln -sfn "${DATA_DIR}" "/home/${APP_USER}/.bitcoin"
     chown -h "${APP_USER}:${APP_GROUP}" "/home/${APP_USER}/.bitcoin"
 

@@ -39,10 +39,6 @@ RUN set -ex \
     && curl -sSL "https://github.com/OmniLayer/omnicore/releases/download/v${OMNICORE_VER}/omnicore-${OMNICORE_VER}-${OMNICORE_ARCH}-linux-gnu.tar.gz" | tar xz \
     && mv omnicore-${OMNICORE_VER} ${APP_NAME} \
     && chown -R ${APP_USER}:${APP_GROUP} ${APP_NAME} \
-    && mkdir -p ${DATA_DIR} \
-    && chown -R ${APP_USER}:${APP_GROUP} ${DATA_DIR} \
-    && ln -sfn ${APP_NAME} /home/${APP_USER}/.bitcoin \
-    && chown -R ${APP_USER}:${APP_GROUP} /home/${APP_USER}/.bitcoin
 
 VOLUME /data
 
