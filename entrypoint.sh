@@ -3,8 +3,8 @@ set -e
 
 if [[ "$1" == "bitcoin-tx" || "$1" == "omnicore-cli" || "$1" == "omnicore-qt" || "$1" == "omnicored" ]]; then
 
-    if [[ ! -s "${APP_DIR}/${APP_NAME}/bitcoin.conf" ]]; then
-        cat <<-EOF > "${APP_DIR}/${APP_NAME}/bitcoin.conf"
+    if [[ ! -s "${DATA_DIR}/bitcoin.conf" ]]; then
+        cat <<-EOF > "${DATA_DIR}/bitcoin.conf"
 server=1
 txindex=1
 printtoconsole=1
@@ -14,17 +14,9 @@ rpcallowip=${RPC_ALLOWIP}
 rpcuser=${BITCOIN_RPC_USER}
 rpcpassword=${BITCOIN_RPC_PASSWORD}
 EOF
-        chown "${APP_USER}:${APP_GROUP}" "${APP_DIR}/${APP_NAME}/bitcoin.conf"
+        chown "${APP_USER}:${APP_GROUP}" "${DATA_DIR}/bitcoin.conf"
     fi
 
-    # ensure correct ownership and linking of data directory
-    # we do not update group ownership here, in case users want to mount
-    # a host directory and still retain access to it
-    chown -R "${APP_USER}" "${APP_DIR}/${APP_NAME}"
-    ln -sfn "${APP_DIR}/${APP_NAME}" "/home/${APP_USER}/.bitcoin"
-    chown -h "${APP_USER}:${APP_GROUP}" "/home/${APP_USER}/.bitcoin"
-
-    echo exec gosu "${APP_USER}" "${APP_DIR}/${APP_NAME}/bin/$@"
     exec /usr/local/bin/gosu "${APP_USER}" "${APP_DIR}/${APP_NAME}/bin/$@"
 fi
 
