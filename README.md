@@ -1,2 +1,2 @@
 # Description
-omni-core image based on alpine linux.
+Omni-core image based on debian stretch version

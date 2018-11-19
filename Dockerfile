@@ -3,17 +3,14 @@
 #
 
 FROM debian:stretch-slim
-MAINTAINER Vincent Gu <v@vgu.io>
 
-ENV OMNICORE_VER          0.3.0
+ENV OMNICORE_VER          0.3.1
 ENV OMNICORE_ARCH         x86_64
 
 ENV RPC_USER              user
 ENV RPC_PASSWORD          password
 ENV RPC_ALLOWIP           "::/0"
 ENV LOG_OUTPUT            /dev/stdout
-
-LABEL omnicore_version="${OMNICORE_VER}" architecture="x86_64"
 
 # define default directory
 ENV APP_DIR              /app
