@@ -21,7 +21,7 @@ ENV APP_USER             omnicore
 ENV APP_GROUP            omnicore
 ENV DATA_DIR             /data/${APP_NAME}
 
-ENV GOSU_VERSION         1.10
+ENV GOSU_VERSION         1.11
 ENV GOSU_ARCH            amd64
 
 ENV DEP curl bash
@@ -35,7 +35,7 @@ RUN set -ex \
     && chmod +x /usr/local/bin/gosu \
     && curl -sSL "https://github.com/OmniLayer/omnicore/releases/download/v${OMNICORE_VER}/omnicore-${OMNICORE_VER}-${OMNICORE_ARCH}-linux-gnu.tar.gz" | tar xz \
     && mv omnicore-${OMNICORE_VER} ${APP_NAME} \
-    && chown -R ${APP_USER}:${APP_GROUP} ${APP_NAME} \
+    && chown -R ${APP_USER}:${APP_GROUP} ${APP_NAME}
 
 VOLUME /data
 
