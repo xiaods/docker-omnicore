@@ -39,7 +39,7 @@ RUN set -ex \
 
 VOLUME /data
 
-EXPOSE 8332
+EXPOSE 8332 8333
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
