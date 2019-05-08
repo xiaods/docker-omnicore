@@ -4,7 +4,7 @@
 
 FROM debian:stretch-slim
 
-ENV OMNICORE_VER          0.4.0
+ENV OMNICORE_VER          0.5.0
 ENV OMNICORE_ARCH         x86_64
 
 ENV RPC_USER              user
